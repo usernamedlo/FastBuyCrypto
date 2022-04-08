@@ -10,11 +10,15 @@ const myAddress = secret["public_key"]
 const amountToSwap = '1'
 const gwei = '5500'
 const slippage = 0
+const url = "https://evm-cronos.crypto.org/"
 
-// Adresse du contrat du WCRO et de Cronaswap (le DEx)
+// TEST
+// 0x66e428c3f67a68878562e79A0234c1F83c208770
+
+// Adresse du contrat du WCRO et de MMF (le DEx)
 const addresses = {
     WCRO: "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
-    router: "0xcd7d16fB918511BF7269eC4f48d61D79Fb26f918",
+    router: "0x145677FC4d9b8F19B5D56d1820c48e0443049a30",
     target:  myAddress
 }
 
@@ -22,11 +26,11 @@ const WCROAmount = ethers.utils.parseEther(amountToSwap).toHexString();
 const gasPrice = ethers.utils.parseUnits(gwei, 'gwei');
 const gas = {
     gasPrice: gasPrice,
-    gasLimit: 2000000
+    gasLimit: 1500000
 }
 
 // URL de RCP
-const CROprovider = new ethers.providers.JsonRpcProvider('https://evm-cronos.crypto.org');
+const CROprovider = new ethers.providers.JsonRpcProvider(url);
 const account = new ethers.Wallet(privateKey, CROprovider);
 
 const router = new ethers.Contract(
